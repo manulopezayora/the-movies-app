@@ -7,6 +7,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { InputModule } from '../shared/components/input/input.module';
 import { LoginFormComponent } from './components/login-form/login-form.component';
+import { ButtonModule } from '../shared/components/button/button.module';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { LoginFormComponent } from './components/login-form/login-form.component
   imports: [
     CommonModule,
     UserRoutingModule,
-    InputModule
+    InputModule,
+    ButtonModule
   ]
 })
 export class UserModule { }
