@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Login } from '../../models/Login.model';
 import { User } from '../../models/User.model';
 import { UserService } from '../../services/user.service';
+import { checkIfUserExist, checkPasswordsMatch } from '../../utils/user.utils';
 
 @Component({
   selector: 'app-register',
@@ -34,26 +35,18 @@ export class RegisterComponent implements OnInit {
     return userListParse;
   }
 
-  private validateRegisterForm(user: User | Login, userList: any): boolean {
-    if (this.checkIfUserExist(user, userList)) {
+  private validateRegisterForm(user: User, userList: any): boolean {
+    if (checkIfUserExist(user, userList)) {
       // TODO: Error
       console.error('The user is already registered');
       return false;
     }
-    if (!this.checkPasswordsMatch()) {
+    if (!checkPasswordsMatch(user.password, user.password2)) {
       // TODO: Error
       console.error('The two passwords do not match');
       return false
     }
     return true;
-  }
-
-  private checkIfUserExist(user: User | Login, userList: User[]): boolean {
-    return userList.some((storageUser: User) => storageUser.username === user.username);
-  }
-
-  private checkPasswordsMatch(): boolean {
-    return this.registerForm.get('password')?.value === this.registerForm.get('password2')?.value;
   }
 
   private sendRegister(user: User[]): void {
