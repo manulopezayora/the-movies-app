@@ -3,6 +3,6 @@
     <app-input formControlName="password" [label]="'Password'" [inputType]="'password'"></app-input>
     <div class="form__buttons">
         <app-button [buttonClass]="['primary']" [buttonLabel]="'Login'" (click)="sendLoginForm()"></app-button>
-        <app-button [buttonLabel]="'Register'"></app-button>
+        <app-button [buttonLabel]="'Register'" [routerLink]="'/user/register'"></app-button>
     </div>
 </form>
