@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Login } from '../../models/Login.model';
 import { User } from '../../models/User.model';
 import { UserService } from '../../services/user.service';
-import { checkIfUserExist, checkPasswordsMatch } from '../../utils/user.utils';
+import { checkIfUserExist, checkPasswordsMatch, getUserList } from '../../utils/user.utils';
 
 @Component({
   selector: 'app-register',
@@ -21,18 +21,12 @@ export class RegisterComponent implements OnInit {
   }
 
   public submitRegisterForm(): void {
-    const userList: User[] = this.getUserList();
+    const userList: User[] = getUserList();
     if (this.registerForm.valid && this.validateRegisterForm(this.registerForm.value, userList)) {
       userList.push(this.registerForm.value);
       this.sendRegister(userList);
       this.registerForm.reset();
     }
-  }
-
-  private getUserList(): User[] {
-    const userList: any = localStorage.getItem('movieAppUser');
-    const userListParse: any = JSON.parse(userList) || [];
-    return userListParse;
   }
 
   private validateRegisterForm(user: User, userList: any): boolean {

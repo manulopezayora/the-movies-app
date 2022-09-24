@@ -2,6 +2,8 @@ import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Login } from '../../models/Login.model';
+import { checkIfUserExist, getUserList } from '../../utils/user.utils';
+import { User } from '../../models/User.model';
 
 @Component({
   selector: 'app-login-form',
@@ -19,8 +21,12 @@ export class LoginFormComponent implements OnInit {
   }
 
   public sendLoginForm(): void {
-    if (this.loginForm.valid) {
+    const userList: User[] = getUserList();
+    if (this.loginForm.valid && checkIfUserExist(this.loginForm.value, userList)) {
       this.sendLogin(this.loginForm.value);
+    } else {
+      // TODO error
+      console.error('Username or password does not exist');
     }
   }
 
