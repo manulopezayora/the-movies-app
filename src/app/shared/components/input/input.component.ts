@@ -14,8 +14,11 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class InputComponent implements OnInit {
   @Input() label: string | undefined;
+  @Input() inputType: string | undefined;
 
-  constructor() { }
+  constructor() {
+    this.inputType = this.inputType || 'text';
+  }
 
   ngOnInit(): void {
   }
