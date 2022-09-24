@@ -1,4 +1,4 @@
 <div class="field">
     <label *ngIf="label" class="field__label" for="input">{{ label }}</label>
-    <input class="field__input" [type]="inputType" />
+    <input class="field__input" [type]="inputType" [value]="value" [disabled]="isDisabled" (input)="onInput($event)" />
 </div>
