@@ -1,60 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Login } from '../../models/Login.model';
-import { User } from '../../models/User.model';
-import { UserService } from '../../services/user.service';
-import { checkIfUserExist, checkPasswordsMatch, getUserList } from '../../utils/user.utils';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit {
-
-  public registerForm!: FormGroup;
-
-  constructor(private userService: UserService) { }
-
-  ngOnInit(): void {
-    this.createRegisterForm();
-  }
-
-  public submitRegisterForm(): void {
-    const userList: User[] = getUserList();
-    if (this.registerForm.valid && this.validateRegisterForm(this.registerForm.value, userList)) {
-      userList.push(this.registerForm.value);
-      this.sendRegister(userList);
-      this.registerForm.reset();
-    }
-  }
-
-  private validateRegisterForm(user: User, userList: any): boolean {
-    if (checkIfUserExist(user, userList)) {
-      // TODO: Error
-      console.error('The user is already registered');
-      return false;
-    }
-    if (!checkPasswordsMatch(user.password, user.password2)) {
-      // TODO: Error
-      console.error('The two passwords do not match');
-      return false
-    }
-    return true;
-  }
-
-  private sendRegister(user: User[]): void {
-    this.userService.registerUser(user);
-  }
-
-  private createRegisterForm(): void {
-    this.registerForm = new FormGroup({
-      username: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required]),
-      password2: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      favMovies: new FormControl([])
-    })
-  }
+export class RegisterComponent  {
 
 }

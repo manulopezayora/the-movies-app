@@ -9,6 +9,7 @@ import { InputModule } from '../shared/components/input/input.module';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { ButtonModule } from '../shared/components/button/button.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RegisterFormComponent } from './components/register-form/register-form.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     ProfileComponent,
     RegisterComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    RegisterFormComponent
   ],
   imports: [
     CommonModule,
