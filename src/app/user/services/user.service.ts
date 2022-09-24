@@ -1,3 +1,4 @@
+import { User } from '../models/User.model';
 import { Login } from './../models/Login.model';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
@@ -7,10 +8,12 @@ import { environment } from 'src/environments/environment';
 })
 export class UserService {
 
-  constructor() { }
 
   public sendLogin(login: Login): void {
-    localStorage.setItem('user', JSON.stringify(login));
     sessionStorage.setItem('token', environment.token);
+  }
+
+  public registerUser(user: User[]): void {
+    localStorage.setItem('movieAppUser', JSON.stringify(user));
   }
 }
