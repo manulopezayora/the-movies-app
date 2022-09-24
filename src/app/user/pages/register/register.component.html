@@ -1,1 +1,10 @@
-<p>register works!</p>
+<form class="form" [formGroup]="registerForm">
+    <app-input formControlName="username" [label]="'Username'"></app-input>
+    <app-input formControlName="password" [label]="'Password'" [inputType]="'password'"></app-input>
+    <app-input formControlName="password2" [label]="'Confirm Password'" [inputType]="'password'"></app-input>
+    <app-input formControlName="email" [label]="'Email'" [inputType]="'email'"></app-input>
+    <div class="form__buttons">
+        <app-button [buttonClass]="['primary']" [buttonLabel]="'Register'" (click)="sendRegisterForm()"></app-button>
+        <app-button [buttonLabel]="'Back to login'" [routerLink]="'/user/login'"></app-button>
+    </div>
+</form>
