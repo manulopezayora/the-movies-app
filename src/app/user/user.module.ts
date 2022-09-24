@@ -8,6 +8,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { InputModule } from '../shared/components/input/input.module';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { ButtonModule } from '../shared/components/button/button.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { ButtonModule } from '../shared/components/button/button.module';
   imports: [
     CommonModule,
     UserRoutingModule,
+    ReactiveFormsModule,
     InputModule,
     ButtonModule
   ]

@@ -1,8 +1,8 @@
-<form class="form">
-    <app-input [label]="'Username'"></app-input>
-    <app-input [label]="'Password'" [inputType]="'password'"></app-input>
+<form class="form" [formGroup]="loginForm">
+    <app-input formControlName="username" [label]="'Username'"></app-input>
+    <app-input formControlName="password" [label]="'Password'" [inputType]="'password'"></app-input>
     <div class="form__buttons">
-        <app-button [buttonClass]="['primary']" [buttonLabel]="'Login'"></app-button>
+        <app-button [buttonClass]="['primary']" [buttonLabel]="'Login'" (click)="sendLoginForm()"></app-button>
         <app-button [buttonLabel]="'Register'"></app-button>
     </div>
 </form>
