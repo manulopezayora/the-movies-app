@@ -17,4 +17,12 @@ export class MoviesService {
   public getPopularMovies(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/movie/popular`);
   }
+
+  public getTopRatedMovies(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/movie/top_rated`);
+  }
+
+  public getTrendingDayMovies(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/trending/movie/day`);
+  }
 }
