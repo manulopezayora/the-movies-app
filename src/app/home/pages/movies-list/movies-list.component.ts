@@ -4,6 +4,7 @@ import { take } from 'rxjs';
 import { MovieResponse, Result } from '../../models/MovieResponse.model';
 import { environment } from 'src/environments/environment';
 import { HttpErrorResponse } from '@angular/common/http';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-movies-list',
@@ -16,7 +17,9 @@ export class MoviesListComponent implements OnInit {
   public topRatedList: Result[];
   public trendingDayMoviesList: Result[];
 
-  constructor(private _moviesService: MoviesService) { }
+  constructor(
+    private _moviesService: MoviesService
+  ) { }
 
   ngOnInit(): void {
     this._getMostPopularMovieList();

@@ -2,20 +2,19 @@ import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthInterceptorService implements HttpInterceptor {
 
-  constructor() {}
+  constructor(private _spinnerService: NgxSpinnerService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
   
     const token: string = sessionStorage.getItem('token')!;
-
     let request = req;
-
     if (token) {
       request = req.clone({
         setHeaders: {
@@ -26,7 +25,6 @@ export class AuthInterceptorService implements HttpInterceptor {
         }
       });
     }
-
     return next.handle(request);
   }
 }
