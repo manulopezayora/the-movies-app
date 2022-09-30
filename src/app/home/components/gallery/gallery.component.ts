@@ -10,15 +10,12 @@ export class GalleryComponent implements OnInit {
   @Input() title: string;
   @Input() movieList: Result[];
 
-  public isMovieDataPresent: boolean;
-
   constructor() {
     this.title = this.title ?? 'Movie List';
     this.movieList = [];
   }
 
   ngOnInit(): void {
-    this.isMovieDataPresent = this.movieList.length ? true : false;
   }
 
 }
