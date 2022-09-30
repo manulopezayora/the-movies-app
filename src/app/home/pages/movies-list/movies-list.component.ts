@@ -48,7 +48,7 @@ export class MoviesListComponent implements OnInit {
   private _getTopRatedMovieList() {
     this._moviesService.getTopRatedMovies().pipe(take(1)).subscribe({
       next: (response: MovieResponse) => {
-        this.mostPopularList = response.results.map((movie: Result) => {
+        this.topRatedList = response.results.map((movie: Result) => {
           return {
             ...movie,
             poster_path: `${environment.baseUrlImage}${movie.poster_path}`,
@@ -66,7 +66,7 @@ export class MoviesListComponent implements OnInit {
   private _getTrendingDayMoviesList() {
     this._moviesService.getTrendingDayMovies().pipe(take(1)).subscribe({
       next: (response: MovieResponse) => {
-        this.mostPopularList = response.results.map((movie: Result) => {
+        this.trendingDayMoviesList = response.results.map((movie: Result) => {
           return {
             ...movie,
             poster_path: `${environment.baseUrlImage}${movie.poster_path}`,
